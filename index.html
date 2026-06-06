@@ -12,8 +12,132 @@
   * { -webkit-user-select: none !important; -moz-user-select: none !important; -ms-user-select: none !important; user-select: none !important; }
   input, textarea, [contenteditable="true"] { -webkit-user-select: text !important; -moz-user-select: text !important; user-select: text !important; }
 </style>
+
+<style id="print-fix-css">
+/* ===== PRINT BLACK FIX ===== */
+@media print {
+  html, body {
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    background-image: none !important;
+    color: #000 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  body > * { display: none !important; }
+  #print-area {
+    display: block !important;
+    position: fixed !important;
+    top: 0 !important; left: 0 !important;
+    width: 100% !important; height: auto !important;
+    background: #ffffff !important;
+    margin: 0 !important; padding: 0 !important;
+    z-index: 999999 !important;
+  }
+  #print-area #resume-preview, #print-resume-content {
+    background: white !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    width: 100% !important;
+    max-height: none !important;
+    overflow: visible !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  /* Force all resume inner elements to be visible */
+  #print-area *, #print-resume-content * {
+    visibility: visible !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  @page { size: A4; margin: 8mm; background: #fff; }
+}
+
+/* ===== FLOATING BUTTONS - Desktop Only ===== */
+#float-back-btn, #float-download-btn {
+  display: none;
+}
+
+@media (min-width: 769px) {
+  #float-back-btn {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    position: fixed;
+    top: 18px;
+    left: 18px;
+    z-index: 9999;
+    background: rgba(255,255,255,0.95);
+    color: #5B52E8;
+    border: 2px solid #5B52E8;
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 18px rgba(91,82,232,0.25);
+    transition: all 0.2s;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  #float-back-btn:hover {
+    background: #5B52E8;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(91,82,232,0.4);
+  }
+  #float-download-btn {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    position: fixed;
+    top: 18px;
+    right: 18px;
+    z-index: 9999;
+    background: linear-gradient(135deg, #5B52E8, #764ba2);
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 22px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 18px rgba(91,82,232,0.4);
+    transition: all 0.2s;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  #float-download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 28px rgba(91,82,232,0.55);
+    background: linear-gradient(135deg, #4a42d6, #6a3d96);
+  }
+  /* Only show when step-form is active (not hidden) */
+  #step-form.hidden ~ #float-back-btn,
+  #step-form.hidden ~ #float-download-btn {
+    display: none !important;
+  }
+}
+</style>
 </head>
 <body>
+
+<!-- Hidden print iframe -->
+<iframe id="resume-print-iframe" style="position:fixed;top:-9999px;left:-9999px;width:210mm;height:297mm;border:none;opacity:0;pointer-events:none;" title="Print Resume"></iframe>
+<!-- ===== FLOATING BACK + DOWNLOAD BUTTONS (Desktop Only) ===== -->
+<button id="float-back-btn" onclick="floatGoBack()" title="Back to Templates">
+  &#8592; Back
+</button>
+<button id="float-download-btn" onclick="floatDownload()" title="Download / Print PDF">
+  &#8681; Download PDF
+</button>
+
 
 <!-- ===== UNIFIED HERO ===== -->
 <div class="app-shell">
@@ -781,33 +905,163 @@
     if(e.ctrlKey && e.keyCode === 65 && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA'){ e.preventDefault(); return false; }
   });
 
-  // 3. DevTools open detection — size change method
-  var _threshold = 160;
-  setInterval(function(){
-    if(
-      (window.outerWidth - window.innerWidth > _threshold) ||
-      (window.outerHeight - window.innerHeight > _threshold)
-    ){
-      document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;flex-direction:column;background:#1a1a2e;color:#fff;font-family:sans-serif;"><h2 style="color:#e94560;">⚠️ Developer Tools Detected</h2><p style="color:#aaa;">Please close DevTools to continue using this app.</p></div>';
-    }
-  }, 1000);
-
-  // 4. Debugger trap — slows down devtools console
-  setInterval(function(){
-    (function(){ var x = new Date(); debugger; if(new Date() - x > 100){ document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;flex-direction:column;background:#1a1a2e;color:#fff;font-family:sans-serif;"><h2 style="color:#e94560;">⚠️ Developer Tools Detected</h2><p style="color:#aaa;">Please close DevTools to continue using this app.</p></div>'; } })();
-  }, 3000);
-
   // 5. Disable drag on all elements (prevents drag-to-copy)
   document.addEventListener('dragstart', function(e){ e.preventDefault(); return false; });
-
-  // 6. Disable print screen shortcut hint (can't fully block but adds notice)
-  document.addEventListener('keyup', function(e){
-    if(e.keyCode === 44){ /* PrintScreen */ }
-  });
-
-  console.log = console.warn = console.error = console.info = console.debug = function(){};
 })();
 // ====== END PROTECTION ======
+</script>
+
+
+
+
+
+
+
+<script>
+// ============================================================
+// WORKING PDF DOWNLOAD - iframe method (no popup, no blank)
+// ============================================================
+window.downloadPDF = function() {
+  var resumeEl = document.getElementById('resume-preview');
+  if (!resumeEl || resumeEl.innerHTML.trim().length < 50) {
+    alert('Pehle koi template select karein aur details bharen!');
+    return;
+  }
+
+  // Collect only NON-print-media styles to avoid @media print rules bleeding in
+  var allStyles = '';
+  document.querySelectorAll('style').forEach(function(s) {
+    // Strip @media print blocks so they don't hide content in iframe
+    var txt = s.innerHTML.replace(/@media\s+print\s*\{[^{}]*(?:\{[^{}]*\}[^{}]*)*\}/g, '');
+    allStyles += txt + '\n';
+  });
+
+  // Get resume inner HTML
+  var resumeInner = resumeEl.outerHTML;
+
+  // Build complete self-contained HTML - clean, no conflicting print CSS
+  var doc = '<!DOCTYPE html>'
+    + '<html><head><meta charset="UTF-8">'
+    + '<style>'
+    + '* { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; box-sizing: border-box; }'
+    + 'html, body { margin: 0; padding: 0; background: #fff !important; }'
+    + '#resume-preview { background: white !important; padding: 16px; font-family: Calibri, Georgia, serif; line-height: 1.5; color: #2c2c2c; width: 100%; display: block !important; visibility: visible !important; }'
+    + '#resume-preview * { display: revert; visibility: visible !important; }'
+    + '/* Hide location from sidebar - it shows below contact in dark sidebar templates */'
+    + '#resume-preview p[style*="9px"][style*="ccd"]:has(+ p), #resume-preview p[style*="9px"][style*="ccd"] { }'
+    + allStyles
+    + '@media print { html, body { margin:0; padding:0; background:#fff !important; } @page { size: A4; margin: 8mm; } #resume-preview { display: block !important; visibility: visible !important; } }'
+    + '</style>'
+    + '</head><body style="margin:0;padding:0;background:#fff;">'
+    + resumeInner
+    + '</body></html>';
+
+  // Show loading on buttons
+  var floatBtn = document.getElementById('float-download-btn');
+  var origFloatHTML = floatBtn ? floatBtn.innerHTML : '';
+  if (floatBtn) { floatBtn.innerHTML = '&#9203; Generating...'; floatBtn.disabled = true; }
+
+  // Open in new window - most reliable cross-browser method
+  var printWin = window.open('', '_blank', 'width=800,height=600');
+  if (!printWin) {
+    // Popup blocked - fallback to blob download
+    var blob = new Blob([doc], {type: 'text/html'});
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'resume.html';
+    a.click();
+    if (floatBtn) { setTimeout(function(){ floatBtn.innerHTML = origFloatHTML; floatBtn.disabled = false; }, 1000); }
+    return;
+  }
+
+  // Strip location from sidebar before printing
+  var tempDiv = document.createElement('div');
+  tempDiv.innerHTML = resumeInner;
+  // Find sidebar (first div in resume-preview with dark background)
+  var sidebarDivs = tempDiv.querySelectorAll('div[style*="background:#2c3e5a"], div[style*="background:#1a2e4a"], div[style*="background:#d8d8f0"], div[style*="background:#4a4a7a"]');
+  sidebarDivs.forEach(function(sidebar) {
+    // Remove location paragraphs from sidebar (contain 📍)
+    var paras = sidebar.querySelectorAll('p');
+    paras.forEach(function(p) {
+      if (p.textContent.indexOf('📍') !== -1 || p.textContent.indexOf('\uD83D\uDCCD') !== -1) {
+        p.remove();
+      }
+    });
+  });
+  resumeInner = tempDiv.innerHTML;
+
+  // Rebuild doc with cleaned HTML
+  doc = '<!DOCTYPE html>'
+    + '<html><head><meta charset="UTF-8">'
+    + '<style>'
+    + '* { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; box-sizing: border-box; }'
+    + 'html, body { margin: 0; padding: 0; background: #fff !important; height: auto !important; }'
+    + '#resume-preview { background: white !important; padding: 16px; font-family: Calibri, Georgia, serif; line-height: 1.5; color: #2c2c2c; width: 100%; display: block !important; visibility: visible !important; }'
+    + '#resume-preview * { display: revert; visibility: visible !important; }'
+    + allStyles
+    + '@media print { html, body { margin:0; padding:0; background:#fff !important; height: auto !important; } @page { size: A4; margin: 8mm; } #resume-preview { display: block !important; visibility: visible !important; } }'
+    + '</style>'
+    + '</head><body style="margin:0;padding:0;background:#fff;">'
+    + resumeInner
+    + '</body></html>';
+
+  printWin.document.open();
+  printWin.document.write(doc);
+  printWin.document.close();
+
+  // Wait for render then trigger print
+  setTimeout(function() {
+    try {
+      printWin.focus();
+      printWin.print();
+      // Close window after print dialog
+      setTimeout(function() { 
+        try { printWin.close(); } catch(e) {}
+      }, 3000);
+    } catch(e) {
+      printWin.close();
+    }
+    if (floatBtn) { 
+      setTimeout(function() {
+        floatBtn.innerHTML = origFloatHTML; 
+        floatBtn.disabled = false;
+      }, 2000);
+    }
+  }, 1500);
+};
+
+// Floating button functions
+window.floatGoBack = function() {
+  if (typeof goBack === 'function') goBack();
+};
+window.floatDownload = function() {
+  window.downloadPDF();
+};
+
+// Show/hide floating buttons based on which step is visible
+function updateFloatButtons() {
+  var stepForm = document.getElementById('step-form');
+  var backBtn = document.getElementById('float-back-btn');
+  var dlBtn = document.getElementById('float-download-btn');
+  if (!backBtn || !dlBtn || !stepForm) return;
+  var isVisible = !stepForm.classList.contains('hidden');
+  var display = (window.innerWidth >= 769) ? 'flex' : 'none';
+  backBtn.style.display = isVisible ? display : 'none';
+  dlBtn.style.display = isVisible ? display : 'none';
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  updateFloatButtons();
+  var stepForm = document.getElementById('step-form');
+  if (stepForm) {
+    new MutationObserver(updateFloatButtons).observe(stepForm, { attributes: true, attributeFilter: ['class'] });
+  }
+  setInterval(updateFloatButtons, 600);
+  window.addEventListener('resize', updateFloatButtons);
+});
+
+console.log('PDF Download v3 (iframe method) loaded!');
 </script>
 </body>
 </html>
