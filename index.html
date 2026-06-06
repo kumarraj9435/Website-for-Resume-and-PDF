@@ -730,6 +730,10 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#f4f4f8;min-heigh
 /* Merge section */
 .merge-file-item{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;border:1px solid #5DCAA5;background:#E1F5EE;color:#085041;margin-bottom:5px}
 .merge-file-item .fn{flex:1;font-size:12px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.merge-card{width:130px;border:2px solid #5DCAA5;border-radius:10px;background:#fff;overflow:hidden;cursor:grab;transition:transform 0.15s,box-shadow 0.15s;user-select:none;}
+.merge-card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(29,158,117,0.25);}
+.merge-card:active{cursor:grabbing;}
+.merge-card-thumb{width:100%;height:90px;background:#f0f5f3;display:flex;align-items:center;justify-content:center;overflow:hidden;border-bottom:1px solid #ddf5ec;}
 
 
 /* Override container conflicts */
@@ -1232,27 +1236,27 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#f4f4f8;min-heigh
                             <div class="form-row">
                                 <div class="form-group">
                                     <label>Full Name</label>
-                                    <input type="text" id="fullName" value="RAJ BAHADUR" onchange="updatePreview()">
+                                    <input type="text" id="fullName" value="Alex Johnson" onchange="updatePreview()">
                                 </div>
                                 <div class="form-group">
                                     <label>Professional Title</label>
-                                    <input type="text" id="title" value="E-commerce Executive" onchange="updatePreview()">
+                                    <input type="text" id="title" value="Software Engineer" onchange="updatePreview()">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input type="email" id="email" value="kumar.raj9435@gmail.com" onchange="updatePreview()">
+                                    <input type="email" id="email" value="alex.johnson@email.com" onchange="updatePreview()">
                                 </div>
                                 <div class="form-group">
                                     <label>Phone</label>
-                                    <input type="text" id="phone" value="+91-8826655562" onchange="updatePreview()">
+                                    <input type="text" id="phone" value="+91-9000000000" onchange="updatePreview()">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group">
                                     <label>Location</label>
-                                    <input type="text" id="location" value="North East Delhi, Delhi-110094" onchange="updatePreview()">
+                                    <input type="text" id="location" value="Mumbai, Maharashtra - 400001" onchange="updatePreview()">
                                 </div>
                                 <div class="form-group">
                                     <label>LinkedIn Profile</label>
@@ -1279,7 +1283,7 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#f4f4f8;min-heigh
                         <!-- Professional Summary -->
                         <div class="form-section">
                             <h2>📝 Professional Summary</h2>
-                            <textarea id="about" onchange="updatePreview()" placeholder="Brief overview of your professional background and key achievements...">E-commerce professional with 5+ years of proven expertise in product listing, catalog management, and marketplace operations. Skilled in managing multiple e-commerce platforms, inventory optimization, and data-driven decision making. Proficient in Excel automation, accounting software, and marketplace reconciliation.</textarea>
+                            <textarea id="about" onchange="updatePreview()" placeholder="Brief overview of your professional background and key achievements...">Motivated professional with hands-on experience in software development, problem-solving, and cross-functional collaboration. Adept at delivering high-quality results in fast-paced environments. Passionate about continuous learning and building impactful solutions.</textarea>
                         </div>
 
                         <!-- Experience -->
@@ -1299,13 +1303,13 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#f4f4f8;min-heigh
                         <!-- Skills -->
                         <div class="form-section">
                             <h2>🎯 Skills</h2>
-                            <textarea id="skills" onchange="updatePreview()" placeholder="Enter skills separated by commas...">E-commerce Operations, Amazon, Flipkart, Myntra, Nykaa, Meesho, Blinkit, Zepto, Product Listing, Catalog Management, Inventory Management, Marketplace Reconciliation, Advanced Excel, Unicommerce, Tally Prime, Busy Accounting, SEO Optimization, MIS Reporting</textarea>
+                            <textarea id="skills" onchange="updatePreview()" placeholder="Enter skills separated by commas...">JavaScript, React.js, Node.js, Python, HTML/CSS, SQL, Git, REST APIs, Problem Solving, Team Collaboration</textarea>
                         </div>
 
                         <!-- Strengths -->
                         <div class="form-section">
                             <h2>💪 Strengths</h2>
-                            <textarea id="strengths" onchange="updatePreview()" placeholder="List your key strengths...">Energetic and able to work under pressure, Friendly and easy to work with, Optimistic attitude, Eager to learn new skills, Quickly adaptable, Strong analytical abilities, Detail-oriented, Self-motivated</textarea>
+                            <textarea id="strengths" onchange="updatePreview()" placeholder="List your key strengths...">Quick learner, Team player, Detail-oriented, Adaptable, Strong communication skills, Analytical thinking, Self-motivated</textarea>
                         </div>
 
                         <!-- Languages -->
@@ -1320,11 +1324,11 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#f4f4f8;min-heigh
                             <div class="form-row">
                                 <div class="form-group">
                                     <label>Date of Birth</label>
-                                    <input type="text" id="dob" value="08 Nov 1998" onchange="updatePreview()">
+                                    <input type="text" id="dob" value="01 Jan 1999" onchange="updatePreview()">
                                 </div>
                                 <div class="form-group">
                                     <label>Marital Status</label>
-                                    <input type="text" id="marital" value="Unmarried" onchange="updatePreview()">
+                                    <input type="text" id="marital" value="Single" onchange="updatePreview()">
                                 </div>
                             </div>
                             <div class="form-row">
@@ -1561,7 +1565,7 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#f4f4f8;min-heigh
 <div id="p3" class="panel">
   <div class="sec-header sh2" style="background:#E1F5EE;color:#085041">
     <i class="ti ti-git-merge"></i>
-    <div><h2>PDF Merge</h2><p>Combine multiple PDFs into one — set the order too</p></div>
+    <div><h2>PDF Merge</h2><p>Combine multiple PDFs into one — drag to reorder, preview included</p></div>
   </div>
   <div class="drop-zone dz2" onclick="document.getElementById('mi3').click()" ondragover="ddOv(event,this)" ondragleave="ddLv(this)" ondrop="ddDrop(event,this,'mi3',addMerge)">
     <i class="ti ti-files"></i>
@@ -1569,7 +1573,7 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#f4f4f8;min-heigh
     <span>Select multiple PDF files</span>
   </div>
   <input type="file" id="mi3" multiple accept=".pdf" style="display:none" onchange="addMerge(this.files)">
-  <div id="mfl3"></div>
+  <div id="mfl3" style="margin-top:10px;"></div>
   <div class="actions">
     <button class="btn btn2" id="mb3" onclick="runMerge()" disabled><i class="ti ti-git-merge"></i> Merge PDFs</button>
     <button class="btn-ghost bg2" onclick="clearMerge()"><i class="ti ti-trash"></i> Clear</button>
@@ -1582,9 +1586,9 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#f4f4f8;min-heigh
 <div id="p4" class="panel">
   <div class="sec-header sh3">
     <i class="ti ti-crop"></i>
-    <div><h2>PDF Page Crop</h2><p>Set margins or crop a specific area</p></div>
+    <div><h2>PDF Page Crop</h2><p>Draw crop area with mouse on live PDF preview</p></div>
   </div>
-  <div class="drop-zone dz3" onclick="document.getElementById('ci4').click()" ondragover="ddOv(event,this)" ondragleave="ddLv(this)" ondrop="ddDrop(event,this,'ci4',loadCrop)">
+  <div class="drop-zone dz3" id="crop-dropzone" onclick="document.getElementById('ci4').click()" ondragover="ddOv(event,this)" ondragleave="ddLv(this)" ondrop="ddDrop(event,this,'ci4',loadCrop)">
     <i class="ti ti-file-upload"></i>
     <p>Upload the PDF you want to crop</p>
     <span>PDF only • A4 / Letter / Custom all supported</span>
@@ -1592,21 +1596,43 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#f4f4f8;min-heigh
   <input type="file" id="ci4" accept=".pdf" style="display:none" onchange="loadCrop(this.files)">
   <div id="crop-body" style="display:none">
     <div style="margin-bottom:0.75rem;padding:8px 12px;background:#FAECE7;border-radius:8px;border:1px solid #F0997B;color:#712B13;font-size:12px;font-weight:500;display:flex;align-items:center;gap:7px"><i class="ti ti-circle-check"></i><span id="crop-fname">File loaded</span></div>
-    <div style="border-radius:10px;background:#f0f0f8;height:140px;display:flex;align-items:center;justify-content:center;margin-bottom:0.75rem;border:1.5px dashed #AFA9EC;position:relative;overflow:hidden">
-      <div style="text-align:center;color:#D85A30"><i class="ti ti-file-type-pdf" style="font-size:40px;display:block;margin-bottom:6px"></i><span style="font-size:11px;font-weight:500">Page preview</span></div>
-      <div id="mvis" style="position:absolute;border:2px solid #D4537E;background:rgba(212,83,126,0.08);pointer-events:none;top:15%;left:10%;right:10%;bottom:15%"></div>
+    <div style="font-size:12px;color:#555;margin-bottom:8px;font-weight:500;"><i class="ti ti-mouse" style="color:#D85A30"></i> Mouse se crop area drag karein — jahan crop karna hai wahan khicho</div>
+
+    <!-- Crop page nav -->
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+      <button onclick="cropChangePage(-1)" id="crop-prev" style="padding:4px 10px;border:1px solid #ddd;border-radius:6px;background:#fff;cursor:pointer;font-size:12px;" disabled><i class="ti ti-chevron-left"></i></button>
+      <span style="font-size:12px;color:#555;">Page <span id="crop-cur-pg">1</span> of <span id="crop-tot-pg">1</span></span>
+      <button onclick="cropChangePage(1)" id="crop-next" style="padding:4px 10px;border:1px solid #ddd;border-radius:6px;background:#fff;cursor:pointer;font-size:12px;" disabled><i class="ti ti-chevron-right"></i></button>
+      <span style="font-size:11px;color:#999;margin-left:4px;">Preview only — crop applies to all pages</span>
     </div>
-    <div class="grid2">
-      <div class="field-row"><label>Left margin (pt)</label><input type="number" id="cr-l" value="36" oninput="updCropVis()"></div>
-      <div class="field-row"><label>Right margin (pt)</label><input type="number" id="cr-r" value="36" oninput="updCropVis()"></div>
-      <div class="field-row"><label>Top margin (pt)</label><input type="number" id="cr-t" value="36" oninput="updCropVis()"></div>
-      <div class="field-row"><label>Bottom margin (pt)</label><input type="number" id="cr-b" value="36" oninput="updCropVis()"></div>
+
+    <!-- Live canvas with drag crop overlay -->
+    <div style="position:relative;display:inline-block;border:2px solid #AFA9EC;border-radius:8px;overflow:hidden;max-width:100%;cursor:crosshair;" id="crop-canvas-wrap">
+      <canvas id="crop-canvas" style="display:block;max-width:100%;"></canvas>
+      <div id="crop-overlay" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:10;"></div>
+      <div id="crop-selection" style="position:absolute;border:2px solid #D85A30;background:rgba(212,83,126,0.12);display:none;pointer-events:none;z-index:11;"></div>
+      <!-- Dimming masks -->
+      <div id="crop-dim-top"    style="position:absolute;background:rgba(0,0,0,0.45);left:0;right:0;top:0;display:none;pointer-events:none;z-index:9;"></div>
+      <div id="crop-dim-bottom" style="position:absolute;background:rgba(0,0,0,0.45);left:0;right:0;bottom:0;display:none;pointer-events:none;z-index:9;"></div>
+      <div id="crop-dim-left"   style="position:absolute;background:rgba(0,0,0,0.45);top:0;bottom:0;left:0;display:none;pointer-events:none;z-index:9;"></div>
+      <div id="crop-dim-right"  style="position:absolute;background:rgba(0,0,0,0.45);top:0;bottom:0;right:0;display:none;pointer-events:none;z-index:9;"></div>
     </div>
-    <div class="field-row"><label>Pages</label><input type="text" id="cr-p" value="all" placeholder="1-5 or all"></div>
-    <p class="hint"><i class="ti ti-info-circle"></i> 1pt = 0.35mm — A4 = 595×842pt</p>
+
+    <!-- Crop coordinates display -->
+    <div id="crop-coords" style="display:none;margin-top:8px;padding:8px 12px;background:#f0f0f8;border-radius:8px;font-size:12px;color:#444;display:flex;gap:16px;flex-wrap:wrap;">
+      <span>Left: <b id="cc-l">–</b> pt</span>
+      <span>Top: <b id="cc-t">–</b> pt</span>
+      <span>Right: <b id="cc-r">–</b> pt</span>
+      <span>Bottom: <b id="cc-b">–</b> pt</span>
+    </div>
+
+    <div style="display:flex;gap:8px;margin-top:10px;align-items:center;flex-wrap:wrap;">
+      <div class="field-row" style="margin:0;"><label style="font-size:11px;">Pages</label><input type="text" id="cr-p" value="all" placeholder="1-5 or all" style="width:100px;"></div>
+      <p class="hint" style="margin:0;"><i class="ti ti-info-circle"></i> 1pt = 0.35mm • Drag to select crop area</p>
+    </div>
     <div class="actions" style="margin-top:0.75rem">
-      <button class="btn btn3" onclick="runTask(4)"><i class="ti ti-crop"></i> Crop PDF</button>
-      <button class="btn-ghost bg3" onclick="['cr-l','cr-r','cr-t','cr-b'].forEach(id=>document.getElementById(id).value=36);updCropVis()"><i class="ti ti-refresh"></i> Reset</button>
+      <button class="btn btn3" id="crop-apply-btn" onclick="runTask(4)" disabled><i class="ti ti-crop"></i> Crop PDF</button>
+      <button class="btn-ghost bg3" onclick="resetCropSelection()"><i class="ti ti-refresh"></i> Reset Selection</button>
     </div>
     <div class="prog-wrap" id="pw4"><div class="prog-fill pf1" id="pf4" style="background:#D85A30"></div></div>
     <div class="result-box" id="rb4" style="background:#FAECE7;border-color:#D85A30;color:#712B13;display:none"><i class="ti ti-circle-check" style="font-size:20px"></i><span class="result-text" id="rt4"></span><button class="result-dl" style="background:#D85A30"><i class="ti ti-download"></i> Download</button></div>
@@ -1683,32 +1709,30 @@ function switchMainTab(tab, btn) {
 // ============================================================
 
         let formData = {
-            fullName: 'RAJ BAHADUR',
-            title: 'E-commerce Executive',
-            email: 'kumar.raj9435@gmail.com',
-            phone: '+91-8826655562',
-            location: 'North East Delhi, Delhi-110094',
+            fullName: 'Alex Johnson',
+            title: 'Software Engineer',
+            email: 'alex.johnson@email.com',
+            phone: '+91-9000000000',
+            location: 'Mumbai, Maharashtra - 400001',
             linkedin: '',
             website: '',
             gender: '',
             photoBase64: '',
-            about: 'E-commerce professional with 5+ years of proven expertise in product listing, catalog management, and marketplace operations. Skilled in managing multiple e-commerce platforms, inventory optimization, and data-driven decision making. Proficient in Excel automation, accounting software, and marketplace reconciliation.',
+            about: 'Motivated professional with hands-on experience in software development, problem-solving, and cross-functional collaboration. Adept at delivering high-quality results in fast-paced environments. Passionate about continuous learning and building impactful solutions.',
             experience: [
-                { company: 'Genuine Innovations Private Limited', title: 'E-commerce Executive', period: 'June 2024 - Present', details: 'Managed product listings across 8+ platforms (Amazon, Flipkart, Myntra, Nykaa, Meesho, Blinkit, Zepto). Created and updated catalogs with SEO-friendly content. Monitored sales trends and optimized inventory accordingly.' },
-                { company: 'Shrimad India Pvt. Ltd', title: 'E-commerce Manager', period: 'July 2023 - May 2024', details: 'Managed product listings, features, and descriptions. Coordinated order processing, delivery, and returns. Maintained accounts in Tally and Busy. Generated daily, weekly, and monthly MIS reports.' },
-                { company: 'Abhishti Textile Private Limited', title: 'E-commerce Executive', period: 'March 2019 - June 2023', details: 'Product listing, features, and description optimization. Examined sales-related metrics to inform restocks. Coordinated order processing and customer returns. Created promotional offers and managed inventory levels.' }
+                { company: 'Tech Solutions Pvt. Ltd', title: 'Software Engineer', period: 'Jan 2023 - Present', details: 'Developed and maintained web applications using React and Node.js. Collaborated with cross-functional teams to deliver features on time. Improved system performance by 30% through code optimization.' },
+                { company: 'Digital Ventures Ltd', title: 'Junior Developer', period: 'Jun 2021 - Dec 2022', details: 'Built RESTful APIs and integrated third-party services. Participated in code reviews and contributed to technical documentation. Assisted in migrating legacy systems to modern cloud infrastructure.' }
             ],
             education: [
-                { degree: 'B.Com (Programme)', institution: 'Delhi University', year: '2023' },
-                { degree: 'BCA (2nd Year)', institution: 'IGNOU', year: 'Pursuing' },
-                { degree: '12th (CBSE)', institution: 'CBSE Board', year: '2019' },
-                { degree: '10th (CBSE)', institution: 'CBSE Board', year: '2017' }
+                { degree: 'B.Tech (Computer Science)', institution: 'Mumbai University', year: '2021' },
+                { degree: '12th (Science)', institution: 'State Board', year: '2017' },
+                { degree: '10th', institution: 'State Board', year: '2015' }
             ],
-            skills: 'E-commerce Operations, Amazon, Flipkart, Myntra, Nykaa, Meesho, Blinkit, Zepto, Product Listing, Catalog Management, Inventory Management, Marketplace Reconciliation, Advanced Excel, Unicommerce, Tally Prime, Busy Accounting, SEO Optimization, MIS Reporting',
-            strengths: 'Energetic and able to work under pressure, Friendly and easy to work with, Optimistic attitude, Eager to learn new skills, Quickly adaptable, Strong analytical abilities, Detail-oriented, Self-motivated',
+            skills: 'JavaScript, React.js, Node.js, Python, HTML/CSS, SQL, Git, REST APIs, Problem Solving, Team Collaboration',
+            strengths: 'Quick learner, Team player, Detail-oriented, Adaptable, Strong communication skills, Analytical thinking, Self-motivated',
             languages: 'Hindi, English',
-            dob: '08 Nov 1998',
-            marital: 'Unmarried',
+            dob: '01 Jan 1999',
+            marital: 'Single',
             nationality: 'Indian',
             fatherName: '',
             permanentAddress: '',
@@ -2946,18 +2970,133 @@ function updComp(){
 }
 
 // ============================================================
-// CROP VIS
+// CROP — Mouse drag on real PDF preview
 // ============================================================
-function loadCrop(fl){if(!fl.length)return;cropF=fl[0];document.getElementById('crop-body').style.display='block';document.getElementById('crop-fname').textContent=cropF.name}
-function updCropVis(){
-  const l=Math.min(parseInt(document.getElementById('cr-l').value)||0,200);
-  const r=Math.min(parseInt(document.getElementById('cr-r').value)||0,200);
-  const t=Math.min(parseInt(document.getElementById('cr-t').value)||0,200);
-  const b=Math.min(parseInt(document.getElementById('cr-b').value)||0,200);
-  const mv=document.getElementById('mvis');
-  mv.style.left=Math.round(l/595*100)+'%';mv.style.right=Math.round(r/595*100)+'%';
-  mv.style.top=Math.round(t/842*100)+'%';mv.style.bottom=Math.round(b/842*100)+'%';
+let cropPdfDoc=null, cropCurPage=1, cropTotalPages=1;
+let cropScale=1.0;
+let cropPdfWidth=595, cropPdfHeight=842; // PDF points
+let cropSel={x1:0,y1:0,x2:0,y2:0,active:false};
+let cropDragging=false, cropDragStart={x:0,y:0};
+
+async function loadCrop(fl){
+  if(!fl.length)return;
+  cropF=fl[0];
+  document.getElementById('crop-fname').textContent=cropF.name;
+  document.getElementById('crop-body').style.display='block';
+  // Hide dropzone
+  document.getElementById('crop-dropzone').style.display='none';
+  try{
+    const ab=await cropF.arrayBuffer();
+    cropPdfDoc=await pdfjsLib.getDocument({data:new Uint8Array(ab)}).promise;
+    cropTotalPages=cropPdfDoc.numPages;
+    cropCurPage=1;
+    document.getElementById('crop-tot-pg').textContent=cropTotalPages;
+    document.getElementById('crop-prev').disabled=true;
+    document.getElementById('crop-next').disabled=cropTotalPages<=1;
+    await renderCropPage(cropCurPage);
+  }catch(e){alert('PDF load error: '+e.message);}
 }
+
+async function renderCropPage(pg){
+  if(!cropPdfDoc)return;
+  document.getElementById('crop-cur-pg').textContent=pg;
+  const page=await cropPdfDoc.getPage(pg);
+  const vp0=page.getViewport({scale:1});
+  cropPdfWidth=vp0.width; cropPdfHeight=vp0.height;
+  // Fit to max 500px wide
+  const maxW=500;
+  cropScale=Math.min(1.5, maxW/vp0.width);
+  const vp=page.getViewport({scale:cropScale});
+  const canvas=document.getElementById('crop-canvas');
+  canvas.width=vp.width; canvas.height=vp.height;
+  await page.render({canvasContext:canvas.getContext('2d'),viewport:vp}).promise;
+  // Reset selection
+  resetCropSelection();
+  // Attach mouse events to overlay
+  initCropOverlay();
+}
+
+function initCropOverlay(){
+  const overlay=document.getElementById('crop-overlay');
+  overlay.onmousedown=cropMouseDown;
+  overlay.onmousemove=cropMouseMove;
+  overlay.onmouseup=cropMouseUp;
+  overlay.onmouseleave=cropMouseUp;
+}
+
+function cropMouseDown(e){
+  const rect=e.target.getBoundingClientRect();
+  cropDragStart={x:e.clientX-rect.left, y:e.clientY-rect.top};
+  cropSel={x1:cropDragStart.x, y1:cropDragStart.y, x2:cropDragStart.x, y2:cropDragStart.y, active:false};
+  cropDragging=true;
+}
+function cropMouseMove(e){
+  if(!cropDragging)return;
+  const rect=e.target.getBoundingClientRect();
+  const cx=Math.max(0,Math.min(e.clientX-rect.left, rect.width));
+  const cy=Math.max(0,Math.min(e.clientY-rect.top, rect.height));
+  cropSel.x2=cx; cropSel.y2=cy;
+  drawCropSelection();
+}
+function cropMouseUp(e){
+  if(!cropDragging)return;
+  cropDragging=false;
+  const w=Math.abs(cropSel.x2-cropSel.x1), h=Math.abs(cropSel.y2-cropSel.y1);
+  if(w<10||h<10){resetCropSelection();return;}
+  cropSel.active=true;
+  drawCropSelection();
+  // Update coord display
+  const canvas=document.getElementById('crop-canvas');
+  const sx=Math.min(cropSel.x1,cropSel.x2), sy=Math.min(cropSel.y1,cropSel.y2);
+  const ex=Math.max(cropSel.x1,cropSel.x2), ey=Math.max(cropSel.y1,cropSel.y2);
+  // Convert canvas px to PDF points
+  const l=Math.round(sx/cropScale), t=Math.round(sy/cropScale);
+  const r=Math.round((canvas.width-ex)/cropScale), b=Math.round((canvas.height-ey)/cropScale);
+  document.getElementById('cc-l').textContent=l;
+  document.getElementById('cc-t').textContent=t;
+  document.getElementById('cc-r').textContent=r;
+  document.getElementById('cc-b').textContent=b;
+  document.getElementById('crop-coords').style.display='flex';
+  // Store for runTask
+  window._cropMargins={l,t,r,b};
+  document.getElementById('crop-apply-btn').disabled=false;
+}
+function drawCropSelection(){
+  const sel=document.getElementById('crop-selection');
+  const canvas=document.getElementById('crop-canvas');
+  const cw=canvas.width, ch=canvas.height;
+  const x1=Math.min(cropSel.x1,cropSel.x2), y1=Math.min(cropSel.y1,cropSel.y2);
+  const x2=Math.max(cropSel.x1,cropSel.x2), y2=Math.max(cropSel.y1,cropSel.y2);
+  sel.style.left=x1+'px'; sel.style.top=y1+'px';
+  sel.style.width=(x2-x1)+'px'; sel.style.height=(y2-y1)+'px';
+  sel.style.display='block';
+  // Dim areas
+  const dt=document.getElementById('crop-dim-top'), db=document.getElementById('crop-dim-bottom');
+  const dl=document.getElementById('crop-dim-left'), dr=document.getElementById('crop-dim-right');
+  dt.style.height=y1+'px'; dt.style.display='block';
+  db.style.height=(ch-y2)+'px'; db.style.display='block';
+  dl.style.top=y1+'px'; dl.style.height=(y2-y1)+'px'; dl.style.width=x1+'px'; dl.style.display='block';
+  dr.style.top=y1+'px'; dr.style.height=(y2-y1)+'px'; dr.style.left=x2+'px'; dr.style.right='0'; dr.style.display='block';
+  dr.style.width=(document.getElementById('crop-canvas').width-x2)+'px';
+}
+function resetCropSelection(){
+  cropSel={x1:0,y1:0,x2:0,y2:0,active:false};
+  document.getElementById('crop-selection').style.display='none';
+  ['crop-dim-top','crop-dim-bottom','crop-dim-left','crop-dim-right'].forEach(id=>document.getElementById(id).style.display='none');
+  document.getElementById('crop-coords').style.display='none';
+  window._cropMargins=null;
+  const btn=document.getElementById('crop-apply-btn');
+  if(btn)btn.disabled=true;
+}
+async function cropChangePage(dir){
+  const np=cropCurPage+dir;
+  if(np<1||np>cropTotalPages)return;
+  cropCurPage=np;
+  document.getElementById('crop-prev').disabled=cropCurPage<=1;
+  document.getElementById('crop-next').disabled=cropCurPage>=cropTotalPages;
+  await renderCropPage(cropCurPage);
+}
+function updCropVis(){/* legacy — no-op now */}
 
 // ============================================================
 // GENERIC TASKS (Convert / Crop / Compress)
@@ -2973,10 +3112,39 @@ function hideRes(n){const b=document.getElementById('rb'+n);if(b)b.style.display
 function dlResult(n){const bl=blobs[n];if(!bl)return;const a=document.createElement('a');a.href=URL.createObjectURL(bl);a.download='output'+n+'.pdf';a.click()}
 function runTask(n){
   const pwId='pw'+n, pfId='pf'+n;
+  if(n===4){
+    // Real crop using PDF-lib + mouse selection
+    if(!cropF){alert('Pehle PDF upload karein!');return;}
+    if(!window._cropMargins){alert('Pehle canvas pe crop area draw karein!');return;}
+    const dur=2000;
+    animProg(pfId,pwId,dur,async()=>{
+      try{
+        const {PDFDocument}=PDFLib;
+        const ab=await cropF.arrayBuffer();
+        const doc=await PDFDocument.load(ab);
+        const pages=doc.getPages();
+        const m=window._cropMargins;
+        pages.forEach(page=>{
+          const {width,height}=page.getSize();
+          // MediaBox: [x,y,width,height] — we set crop box from margins
+          const l=m.l, b=m.b, r=m.r, t=m.t;
+          page.setCropBox(l, b, width-l-r, height-t-b);
+        });
+        const bytes=await doc.save();
+        const blob=new Blob([bytes],{type:'application/pdf'});
+        showRes(4,'PDF crop ho gaya! ✂️',blob);
+        // Override download button
+        document.querySelector('#rb4 .result-dl').onclick=()=>{
+          const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='cropped.pdf';a.click();
+        };
+      }catch(err){alert('Crop error: '+err.message);}
+    });
+    return;
+  }
   const dur=n===1?3000:2500;
   animProg(pfId,pwId,dur,()=>{
     const fb=new Blob(['%PDF-1.4'],{type:'application/pdf'});
-    const msgs={1:cFiles.length+' files convert ho gaye!',4:'PDF crop ho gaya!',5:coFiles.length+' files compress ho gaye — '+{low:'~20%',medium:'~50%',high:'~70%'}[lvl]+' size reduction.'};
+    const msgs={1:cFiles.length+' files convert ho gaye!',5:coFiles.length+' files compress ho gaye — '+{low:'~20%',medium:'~50%',high:'~70%'}[lvl]+' size reduction.'};
     showRes(n,msgs[n],fb);
   });
 }
@@ -2985,25 +3153,98 @@ function runTask(n){
 // MERGE
 // ============================================================
 let mergeFiles=[];
+let mergeDragIdx=null;
+
 function addMerge(fl){
-  Array.from(fl).forEach(f=>mergeFiles.push(f));
+  Array.from(fl).forEach(f=>mergeFiles.push({file:f,thumb:null}));
   renderMergeList();
   document.getElementById('mb3').disabled=mergeFiles.length<2;
+  // Generate thumbnails
+  mergeFiles.forEach((item,i)=>{
+    if(!item.thumb) generateMergeThumb(i);
+  });
 }
+
+async function generateMergeThumb(idx){
+  try{
+    const ab=await mergeFiles[idx].file.arrayBuffer();
+    const doc=await pdfjsLib.getDocument({data:new Uint8Array(ab)}).promise;
+    const page=await doc.getPage(1);
+    const vp=page.getViewport({scale:0.35});
+    const c=document.createElement('canvas');
+    c.width=vp.width;c.height=vp.height;
+    await page.render({canvasContext:c.getContext('2d'),viewport:vp}).promise;
+    mergeFiles[idx].thumb=c.toDataURL('image/jpeg',0.75);
+    mergeFiles[idx].pages=doc.numPages;
+    // Update just this card's thumb
+    const thumbEl=document.getElementById('mthumb-'+idx);
+    if(thumbEl){thumbEl.src=mergeFiles[idx].thumb;thumbEl.style.display='block';
+      const spin=document.getElementById('mspin-'+idx);if(spin)spin.style.display='none';}
+    const pgEl=document.getElementById('mpgs-'+idx);
+    if(pgEl)pgEl.textContent=doc.numPages+' page'+(doc.numPages!==1?'s':'');
+  }catch(e){/* silently skip bad PDF */}
+}
+
 function renderMergeList(){
-  document.getElementById('mfl3').innerHTML=mergeFiles.map((f,i)=>`
-    <div class="merge-file-item">
-      <i class="ti ti-file-type-pdf" style="font-size:16px"></i>
-      <span class="fn">${f.name}</span>
-      <span style="font-size:11px;opacity:0.7">${fmt(f.size)}</span>
-      ${i>0?`<button onclick="moveMerge(${i},-1)" style="background:none;border:none;cursor:pointer;padding:2px" title="Move up"><i class="ti ti-arrow-up" style="font-size:13px;color:#085041"></i></button>`:'<span style="width:20px"></span>'}
-      ${i<mergeFiles.length-1?`<button onclick="moveMerge(${i},1)" style="background:none;border:none;cursor:pointer;padding:2px" title="Move down"><i class="ti ti-arrow-down" style="font-size:13px;color:#085041"></i></button>`:'<span style="width:20px"></span>'}
-      <button onclick="rmMerge(${i})" style="background:none;border:none;cursor:pointer;padding:2px"><i class="ti ti-x" style="font-size:14px;color:#D85A30"></i></button>
-    </div>`).join('');
+  const container=document.getElementById('mfl3');
+  if(!mergeFiles.length){container.innerHTML='';return;}
+  container.innerHTML=`
+    <div style="font-size:12px;color:#085041;font-weight:600;margin-bottom:8px;"><i class="ti ti-grip-vertical"></i> Drag cards to reorder • ${mergeFiles.length} files</div>
+    <div id="merge-cards" style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:10px;"></div>
+  `;
+  const cards=document.getElementById('merge-cards');
+  mergeFiles.forEach((item,i)=>{
+    const card=document.createElement('div');
+    card.className='merge-card';
+    card.id='mcard-'+i;
+    card.draggable=true;
+    card.dataset.idx=i;
+    card.innerHTML=`
+      <div class="merge-card-thumb" id="mthumb-wrap-${i}">
+        <div id="mspin-${i}" style="font-size:20px;color:#aaa;"><i class="ti ti-loader-2 loading-spin"></i></div>
+        <img id="mthumb-${i}" src="" style="display:none;width:100%;height:100%;object-fit:cover;border-radius:4px;" />
+      </div>
+      <div style="padding:6px 4px 2px;">
+        <div style="font-size:10px;font-weight:600;color:#085041;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="${item.file.name}">${item.file.name}</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:3px;">
+          <span style="font-size:10px;color:#888;" id="mpgs-${i}">${item.pages?item.pages+' page'+(item.pages!==1?'s':''):'...'}</span>
+          <span style="font-size:10px;color:#aaa;">${fmt(item.file.size)}</span>
+        </div>
+        <div style="display:flex;gap:3px;margin-top:4px;justify-content:center;">
+          ${i>0?`<button onclick="moveMerge(${i},-1)" style="background:#e0f5ee;border:1px solid #5DCAA5;border-radius:4px;cursor:pointer;padding:2px 6px;font-size:11px;color:#085041" title="Move left"><i class="ti ti-arrow-left"></i></button>`:'<span style="width:28px"></span>'}
+          <button onclick="rmMerge(${i})" style="background:#faece7;border:1px solid #F0997B;border-radius:4px;cursor:pointer;padding:2px 6px;font-size:11px;color:#712B13" title="Remove"><i class="ti ti-x"></i></button>
+          ${i<mergeFiles.length-1?`<button onclick="moveMerge(${i},1)" style="background:#e0f5ee;border:1px solid #5DCAA5;border-radius:4px;cursor:pointer;padding:2px 6px;font-size:11px;color:#085041" title="Move right"><i class="ti ti-arrow-right"></i></button>`:'<span style="width:28px"></span>'}
+        </div>
+        <div style="text-align:center;margin-top:4px;font-size:10px;color:#bbb;font-weight:700;">#${i+1}</div>
+      </div>
+    `;
+    // Drag events
+    card.addEventListener('dragstart',e=>{mergeDragIdx=i;card.style.opacity='0.5';e.dataTransfer.effectAllowed='move';});
+    card.addEventListener('dragend',e=>{card.style.opacity='1';mergeDragIdx=null;});
+    card.addEventListener('dragover',e=>{e.preventDefault();e.dataTransfer.dropEffect='move';card.style.outline='2px solid #1D9E75';});
+    card.addEventListener('dragleave',e=>{card.style.outline='none';});
+    card.addEventListener('drop',e=>{
+      e.preventDefault();card.style.outline='none';
+      if(mergeDragIdx===null||mergeDragIdx===i)return;
+      const moved=mergeFiles.splice(mergeDragIdx,1)[0];
+      mergeFiles.splice(i,0,moved);
+      renderMergeList();
+      // Re-generate thumbs for any missing
+      mergeFiles.forEach((item,idx)=>{if(!item.thumb)generateMergeThumb(idx);});
+      document.getElementById('mb3').disabled=mergeFiles.length<2;
+    });
+    cards.appendChild(card);
+    if(item.thumb){
+      const thumbEl=document.getElementById('mthumb-'+i);
+      const spin=document.getElementById('mspin-'+i);
+      if(thumbEl){thumbEl.src=item.thumb;thumbEl.style.display='block';}
+      if(spin)spin.style.display='none';
+    }
+  });
   document.getElementById('mb3').disabled=mergeFiles.length<2;
 }
-function moveMerge(i,dir){const tmp=mergeFiles[i];mergeFiles[i]=mergeFiles[i+dir];mergeFiles[i+dir]=tmp;renderMergeList()}
-function rmMerge(i){mergeFiles.splice(i,1);renderMergeList()}
+function moveMerge(i,dir){const tmp=mergeFiles[i];mergeFiles[i]=mergeFiles[i+dir];mergeFiles[i+dir]=tmp;renderMergeList();document.getElementById('mb3').disabled=mergeFiles.length<2;}
+function rmMerge(i){mergeFiles.splice(i,1);renderMergeList();document.getElementById('mb3').disabled=mergeFiles.length<2;}
 function clearMerge(){mergeFiles=[];renderMergeList();document.getElementById('rb3').style.display='none'}
 async function runMerge(){
   if(mergeFiles.length<2)return;
@@ -3014,7 +3255,7 @@ async function runMerge(){
     const merged=await PDFDocument.create();
     for(let i=0;i<mergeFiles.length;i++){
       document.getElementById('pf3').style.width=Math.round(30+60*(i/mergeFiles.length))+'%';
-      const ab=await mergeFiles[i].arrayBuffer();
+      const ab=await mergeFiles[i].file.arrayBuffer();
       const doc=await PDFDocument.load(ab);
       const pages=await merged.copyPages(doc,doc.getPageIndices());
       pages.forEach(p=>merged.addPage(p));
